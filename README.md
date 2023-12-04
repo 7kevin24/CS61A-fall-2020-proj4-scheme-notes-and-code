@@ -89,7 +89,7 @@ PS：仅含基本语法作为速通，详见[ 官方 Project reference: https://
 
 ---
 
-### Scheme 一个重要的 faeature——quote
+### Scheme 一个重要的 feature——quote
 
 1. 思考一下 c/c++中的 a 和'a'的区别
 2. scheme expression 本质上是一个 list，如何确定我们要的是表达式本身（一个 list）还是这个表达式经过 evaluate 得到的 expressiion，请看：
@@ -221,7 +221,11 @@ PS：仅含基本语法作为速通，详见[ 官方 Project reference: https://
    - let form：很好理解，let 通过创建 child frame 的方式将变量和 expr 临时 bind 起来，这显然不会改变 parent frame 中存在的 bindingds。所以是临时的。
 3. 可能遇到的问题：
    - problem 11，实现的 make_call_frame()是 procedure 类的方法，显然要以这个 procedure 的 env 作为 parent frame，那么第三个参数'env'就是多余的，放在这里实际上是为 problem18 做铺垫。这里直接用 self.env 即可。
-
+   - 为了更舒适地进行ok测试，你可能需要
+   ```
+   python ok -v -q 10 --local
+   ```
+   这样可以本地运行所有测试样例（遇到Error不会停+不会出现提交提示，还要多按一个ctrl+c，烦死了）
 #### Write some scheme：
 
 1. 推荐大家在 vscode 上随便下一个 scheme 代码功能插件（代码高亮、变量名补全），写完以后在 copy 到 online intepreter 上调试。[官方 online intepreter：https://code.cs61a.org/](https://code.cs61a.org/)
